@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Assignment 2 Writeup</title>
+      <style type="text/css">
+         body{font-family:"Times New Roman",Times,serif;margin:0 auto 15px;width:960px}table{border-spacing:0;border-collapse:collapse}td{padding:5px 0 0 10px;vertical-align:top}td:first-child{background:#ddd;font-weight:bold;min-width:115px}img{border:1px solid #000;margin:3px}.green td:nth-child(2),.green span{color:#080;font-weight:bold}.yellow td:nth-child(2),.yellow span{color:#b90;font-weight:bold}.red td:nth-child(2),.red span{color:#a00;font-weight:bold}
+      </style>
+      <script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-30163394-1"]);_gaq.push(["_trackPageview"]);(function(){var ga=document.createElement("script");ga.type="text/javascript";ga.async=true;ga.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga,s)})();</script>
+   </head>
+   <body>
+      <table>
+         <tr>
+            <td>Name</td>
+            <td colspan=2>Shi Zhang</td>
+         </tr>
+         <tr>
+            <td>JHED ID</td>
+            <td colspan=2>szhang37</td>
+         </tr>
+         <tr>
+            <td>Class (357 / 457) </td>
+            <td colspan=2>457</td>
+         </tr>
+         <tr>
+            <td>Environment</td>
+            <td colspan=2>G++, Eclipse, Fedora 17 (64-bit)</td>
+         </tr>
+         <tr>
+            <td>Number of late days used </td>
+            <td colspan=2>0 day</td>
+         </tr>
+         <tr>
+            <td>Features</td>
+            <td colspan=2>Green features are fully implemented; yellow features are partially implemented; red features are unimplemented. Due to the slowness of jittered supersampling, it was implemented only as a proof-of-concept and turned off for the generation of all other image examples shown below.<br>
+               <img src="szhang37_HTML/test.bmp" alt="test.bmp">
+               <br>test.ray, 1.40732 seconds
+            </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>RayScene::GetRay</span></td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RayGroup::intersect</span>
+               <br>First version: Local transformation and bounding volume information ignored 
+            </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RaySphere::intersect</span><br>First version: Texture coordinates ignored </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RayTriangle::intersect</span><br>First version: Texture coordinates ignored </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>RayScene::GetColor</span><br>First version: Only ambient and emissive properties calculated </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RayPointLight::getDiffuse, RaySpotLight::getDiffuse, RayDirectionalLight::getDiffuse</span></td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RayPointLight::getSpecular, RaySpotLight::getSpecular, RayDirectionalLight::getSpecular</span></td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RayPointLight::isInShadow, RaySpotLight::isInShadow, RayDirectionalLight::isInShadow</span></td>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>RayScene::GetColor</span><br>Second version: Diffuse and specular contributions from light sources added </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RayGroup::intersect</span><br>Second version: Local transformations taken into account </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>RayScene::GetColor</span>
+               <br>Second version: Reflected color contributions added
+               <br><img src="szhang37_HTML/dog.bmp" alt="dog.bmp">
+               <br>dog.ray, 3.89 seconds<br><img src="szhang37_HTML/bunny.bmp" alt="bunny.bmp">
+               <br>bunny.ray, 5.73 seconds 
+            </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>RayScene::GetColor</span>
+               <br>Third version: Refracted color contributions added, but refraction indices ignored 
+            </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RayPointLight::transparency, RaySpotLight::transparency, RayDirectionalLight::transparency</span></td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RayScene::GetColor</span><br>Fourth version: Refraction indices taken into account </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(3)</td>
+            <td><span>RayShape::setBoundingBox, RayGroup::setBoundingBox, BoundingBox3D::intersect, RayGroup::intersect</span></td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RayGroup::intersect</span>
+               <br>Fourth version: Bounding boxes ordered and tested before shapes intersected 
+            </td>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>RayTriangle::intersect</span><br>Second version: Texture coordinates taken into account </td>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>RaySphere::intersect</span><br>Second version: Texture coordinates taken into account </td>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>Jittered supersampling</span>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>Soft shadows</span></td>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>RayBox::intersect</span>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>RayCylinder::intersect</span>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>RayCone::intersect</span></td>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>Perlin noise</span></td>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>Bump mapping</span></td>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>SIGGRAPH paper procedure</span></td>
+         </tr>
+         <tr class=red>
+            <td>&nbsp;</td>
+            <td>(2)</td>
+            <td><span>Octree or BSP</span></td>
+         </tr>
+         <tr class=green>
+            <td>Other points</td>
+            <td>(1)</td>
+            <td><span>Submitting one or more images for the art contests</span><br><img src="szhang37_HTML/vase.bmp"> </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(1)</td>
+            <td><span>Submitting one or more .ray files for the art contests</span><br>See <a href="szhang37_HTML/vase1.ray">vase.ray</a>, which was used to create the final vase frame of <a href="szhang37_HTML/vase.bmp">vase.bmp</a>. </td>
+         </tr>
+         <tr class=green>
+            <td>&nbsp;</td>
+            <td>(?)</td>
+            <td><span>Trace hundreds of thousands of triangles in few minutes with recursion depth 5</span><br>The provided buddha.ray file contains 318416 triangles and was traced in 3.64 seconds with recursion depth 5:<br><img src="szhang37_HTML/buddha.bmp" alt="buddha.bmp"></td>
+         </tr>
+      </table>
+      <script type="text/javascript">var _paq=_paq||[];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function(){var u=("https:"==document.location.protocol?"https":"http")+"://chaidarun.com/piwik/";_paq.push(["setTrackerUrl",u+"piwik.php"]);_paq.push(["setSiteId","1"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src=u+"piwik.js";s.parentNode.insertBefore(g,s)})();</script>
+      <noscript><img src="http://chaidarun.com/piwik/piwik.php?idsite=1&amp;rec=1" style="border:0" alt=""></noscript>
+   </body>
+</html>
