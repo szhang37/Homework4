@@ -120,7 +120,6 @@ Matrix4D ParametrizedRayGroup::getInverseMatrix(void){
 Matrix4D ParametrizedRayGroup::getNormalMatrix(void){
 	return Matrix4D::IdentityMatrix();
 }
-
 Matrix4D ParametrizedEulerAnglesAndTranslation::getMatrix(void){
 	return Matrix4D::IdentityMatrix();
 }
