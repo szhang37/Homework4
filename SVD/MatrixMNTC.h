@@ -26,11 +26,10 @@
 #endif
 
 #if OS == OS_WINNT
-#include <comdef.h>
+#include "comdef.h"
 #else
 #include "comdef.h"
 #endif
-
 
 template <class Coord> class GXMatrixMNTC {
 

@@ -14,3 +14,5 @@ public:
 
         HRESULT Error () { return m_hr; };
 };
+
+
