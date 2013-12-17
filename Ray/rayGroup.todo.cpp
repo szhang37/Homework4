@@ -114,21 +114,42 @@ int RayGroup::drawOpenGL(int materialIndex){
 /////////////////////
 // Animation Stuff //
 /////////////////////
-Matrix4D ParametrizedRayGroup::getInverseMatrix(void){
-	return Matrix4D::IdentityMatrix();
+Matrix4D ParametrizedEulerAnglesAndTranslation::getMatrix(void) {
+  
+  Point3D angles = value->eulerAngles;
+  Point3D translate = value->translate;
+
+  Matrix3D rotation = Matrix3D(angles);
+
+  return Matrix4D(rotation, translate);
+
 }
-Matrix4D ParametrizedRayGroup::getNormalMatrix(void){
-	return Matrix4D::IdentityMatrix();
+Matrix4D ParametrizedClosestRotationAndTranslation::getMatrix(void) {
+
+  Matrix3D notRotation = value->rotation;
+  Point3D translate = value->translate;
+
+  Matrix3D closestRotation = notRotation.closestRotation();
+
+  return Matrix4D(closestRotation, translate);
+
 }
-Matrix4D ParametrizedEulerAnglesAndTranslation::getMatrix(void){
-	return Matrix4D::IdentityMatrix();
+Matrix4D ParametrizedRotationLogarithmAndTranslation::getMatrix(void) {
+  Matrix3D m = value->skewSymmetric;
+  Point3D translate = value->translate;
+
+  Matrix3D exponential = Matrix3D::Exp(m, 100);
+
+  return Matrix4D(exponential, translate);
+
 }
-Matrix4D ParametrizedClosestRotationAndTranslation::getMatrix(void){
-	return Matrix4D::IdentityMatrix();
-}
-Matrix4D ParametrizedRotationLogarithmAndTranslation::getMatrix(void){
-	return Matrix4D::IdentityMatrix();
-}
-Matrix4D ParametrizedQuaternionAndTranslation::getMatrix(void){
-	return Matrix4D::IdentityMatrix();
+Matrix4D ParametrizedQuaternionAndTranslation::getMatrix(void) {
+
+  Quaternion q = value->quaternion;
+  Point3D translate = value->translate;
+
+  Matrix3D closestRotation = Matrix3D(q);
+
+  return Matrix4D(closestRotation, translate);
+
 }

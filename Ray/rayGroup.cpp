@@ -136,8 +136,8 @@ void ParametrizedRayGroup::writeEnd(int indent,FILE* fp){
 	for(i=0;i<indent;i++){fprintf(fp," ");}
 	fprintf(fp,"#joint_end\n");
 }
-//Matrix4D ParametrizedRayGroup::getInverseMatrix(void){return getMatrix().invert();}
-//Matrix4D ParametrizedRayGroup::getNormalMatrix(void){return getMatrix().invert().transpose();}
+Matrix4D ParametrizedRayGroup::getInverseMatrix(void){return getMatrix().invert();}
+Matrix4D ParametrizedRayGroup::getNormalMatrix(void){return getMatrix().invert().transpose();}
 
 //////////////////////////
 // ParametrizedMatrix4D //

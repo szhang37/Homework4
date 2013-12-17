@@ -1,0 +1,48 @@
+#camera 0.0 10.0 10.0   0.0 -1.0 -1.0   0.0 1.0 -1.0   .523  
+#background 0.2 0.2 0.2
+#ambient 0.5 0.5 0.5 
+#ray_file_num 1
+#ray_file c.ray
+#key_file_num 1
+#key_file mine.key
+
+#light_num 1
+#light_dir
+         1.0  1.0  1.0
+        -1.0 -1.0  0.0
+
+
+
+#joint_begin ROOT_NATURAL
+#group_begin
+        0.5 0.0 0.0 0.0
+        0.0 1.0 0.0 2.5
+        0.0 0.0 0.5 0.0
+        0.0 0.0 0.0 1.0
+        #ray_file_instance 0
+
+   #group_begin
+    1 0 0 0
+    0 1 0 0.160202
+    0 0 1 -0.0265675
+    0 0 0 1
+   #joint_begin blob
+   #group_begin
+           1.0 0.0 0.0 0.0
+           0.0 1.0 0.0 0.0
+           0.0 0.0 1.0 0.0
+           0.0 0.0 0.0 1.0
+           #ray_file_instance 0
+   #group_end
+   #joint_end
+#group_end
+#group_end
+#joint_end
+
+#group_begin
+           1.0 0.0 0.0 0.0
+           0.0 1.0 0.0 0.0
+           0.0 0.0 1.0 0.0
+           0.0 0.0 0.0 1.0
+           #ray_file_instance 0
+   #group_end

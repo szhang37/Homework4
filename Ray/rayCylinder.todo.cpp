@@ -28,47 +28,26 @@ int RayCylinder::drawOpenGL(int materialIndex){
 		material->drawOpenGL();
 	}
 
-	GLUquadric *quad;
-	GLdouble rad = radius;
-	GLdouble h = height;
-	//glBegin(GL_);
-	//Point3D tex = material->tex;
-	quad = gluNewQuadric();
-
-	gluQuadricNormals(quad, GLU_SMOOTH);
-	gluQuadricDrawStyle(quad, GLU_FILL);
-	gluQuadricOrientation(quad, GLU_OUTSIDE);    
-	gluQuadricTexture(quad, GL_TRUE);
-	//glTexCoord2f(tex.p[0], tex.p[1]);
-
 	glPushMatrix();
-	//
-	glTranslatef(center.p[0],center.p[1],center.p[2]);
-	glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
-	
-    
-	gluCylinder(quad,rad,rad,h,100,100);
-       
-	//glTranslatef(center.p[0],center.p[1],center.p[2]);	
 
-	glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
-	
-	gluDisk(quad, 0.0f, rad, 100, 1);
+        glTranslatef(center[0], center[1] - height / 2, center[2]);
 
-	glRotatef(180.0f, 1.0f, 0.0f, 0.0f);
-	
-   	glTranslatef(0.0f , 0.0f , h);
+        GLUquadricObj *quadratic;
+        quadratic = gluNewQuadric();
+        gluQuadricNormals(quadratic, GLU_SMOOTH);
+        gluQuadricTexture(quadratic, GL_TRUE);
 
-	
-   	gluDisk(quad, 0.0f, rad, 100, 1);
+        glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
+        gluCylinder(quadratic, this->radius, this->radius, this->height, 50, 1);
 
-	glTranslatef(0.0f , 0.0f , -h);
-	glPopMatrix();
-	//	glRotatef(90, 1,0,0);
+        glRotatef(180.0f, 1.0f, 0.0f, 0.0f);
+        gluDisk(quadratic, 0, this->radius, 50, 1);
 
+        glRotatef(180.0f, 1.0f, 0.0f, 0.0f);
+        glTranslatef(0.0f, 0.0f, this->height);
+        gluDisk(quadratic, 0, this->radius, 50, 1);
 
-	gluDeleteQuadric(quad);
-
+        glPopMatrix();
 
 	return materialIndex;
 
